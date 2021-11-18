@@ -1,0 +1,57 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  line-height: 1.5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 5.4rem;
+  margin-bottom:1.5rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+.header {
+  height: 30vh;
+  padding-top: 7vh;
+}
+.result {
+  height: 25vh;
+}
+.section {
+  display: flex;
+  align-items: center;
+  height: 45vh;
+  padding:0 10%;
+  justify-content: center;
+  gap:10%;
+}
+.rock {
+  flex: 0 1 20%;
+}
+.paper {
+  flex: 0 1 20%;
+}
+.scissors {
+  flex: 0 1 20%;
+}
