@@ -1,4 +1,31 @@
+let counter = 5;
+let yourHP = 5;
+let computerHP = 5;
+
 let endText = document.getElementById("ping");
+let resultText = document.getElementById("theEnd");
+
+let hp1 = document.getElementById("you");
+let hp2 = document.getElementById("computer");
+
+playerPlay();
+
+
+function playerPlay() {
+
+    document.getElementById("left").addEventListener('click', () => {
+        play('Rock', computerPlay());
+
+
+    });
+    document.getElementById("mid").addEventListener('click', () => {
+        play('Paper', computerPlay());
+
+    });
+    document.getElementById("right").addEventListener('click', () => {
+        play('Scissors', computerPlay());
+    });
+}
 
 function computerPlay() {
     let number = Math.floor(Math.random() * 3 + 1);
@@ -14,73 +41,62 @@ function computerPlay() {
 
 function play(playerSelection, computerSelection) {
 
+
     if (playerSelection == "Rock") {
         if (computerSelection == "Rock") {
             endText.innerText = ("No one get the point!");
-            return null
+
         } else if (computerSelection == "Paper") {
             endText.innerText = ("Computer get one point!");
-            return 2
+            yourHP--;
         } else {
             endText.innerText = ("You get one point!");
-            return 1
+            computerHP--;
         }
     } else if (playerSelection == "Paper") {
         if (computerSelection == "Rock") {
             endText.innerText = ("You get one point!");
-            return 1
+            computerHP--;
         } else if (computerSelection == "Paper") {
             endText.innerText = ("No one get the point!");
-            return null
+
         } else {
 
             endText.innerText = ("Computer get one point!");
-            return 2
+            yourHP--;
         }
-    } else {
+    }
+    else if (playerSelection == "Scissors") {
         if (computerSelection == "Rock") {
 
             endText.innerText = ("Computer get one point!");
-            return 2
+            yourHP--;
         } else if (computerSelection == "Paper") {
 
             endText.innerText = ("You get one point!");
-            return 1
+            computerHP--;
         } else {
             endText.innerText = ("No one get the point!");
-            return null
+
         }
     }
-
-}
-/*
-function game() {
-    let counter = 0;
-    let score;
-    for(let i = 0; i < 5; i++) {
-        let result = play('Rock', computerPlay());
-        if (result == 1) {
-            counter++;
-        }
-        else if (result == 2) {
-            counter--;
+    hp1.innerText = yourHP;
+    hp2.innerHTML = computerHP;
+    if (yourHP == 0 || computerHP == 0) {
+        if (yourHP > computerHP) {
+            resultText.innerText = "You WIN!";
+        } else if (yourHP == computerHP) {
+            resultText.innerText = "DRAW!";
         } else {
-
+            resultText.innerText = "You LOSE!";
         }
-        
+        counter = 5;
+        yourHP = 5;
+        computerHP = 5;
+        return false
+    } else {
+        resultText.innerText = "vs";
     }
-    if (counter > 0) {
-        score = "You WIN!";
-    }
-    else if (counter < 0) {
-        score = "You LOSE!";
-    }
-    else {
-        score = "DRAW!"
-    }
-    return score
+
 }
 
-
-
-*/
